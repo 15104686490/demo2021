@@ -38,7 +38,7 @@ public class TestController {
             log.error("pool data size : " + poolData.size());
             return poolData;
         } catch (Exception e) {
-            log.error("some errors when inset data to db");
+            log.error("some errors when select pool data from db");
             log.error(e.toString());
             return null;
             //e.printStackTrace();
@@ -48,9 +48,12 @@ public class TestController {
     @GetMapping("/insertDataTest")
     public boolean insertDataTest() {
         try {
+            poolDataService.insertPoolData();
             return true;
         } catch (Exception e) {
-            e.printStackTrace();
+            //e.printStackTrace();
+            log.error("some errors when insert data to db");
+            log.error(e.toString());
             return false;
         }
     }
